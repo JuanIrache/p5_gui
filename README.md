@@ -11,13 +11,13 @@ For it to work with P5js, your sketch should be in instance mode: https://github
 
 Using npm:
 ```shell
-$ npm install p5gui
+$ npm install p5_gui
 ```
 
 ## Usage
 ```js
 //Load module
-let gui = require('p5gui');
+let gui = require('p5_gui');
 
 //setup basic parameters
 gui.setup(p,//p5js instance
