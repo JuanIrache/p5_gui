@@ -1,0 +1,31 @@
+{
+  "name": "p5_gui",
+  "version": "1.0.0",
+  "description": "Experimental Graphical User Interface for P5js sketches",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuanIrache/p5_gui.git"
+  },
+  "keywords": [
+    "p5js",
+    "p5",
+    "processing",
+    "gui",
+    "user",
+    "interface",
+    "buttons",
+    "sliders",
+    "toggles",
+    "radios"
+  ],
+  "author": "Juan Irache Duesca <juan@tailornadwayne.com> (http://tailorandwayne.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuanIrache/p5_gui/issues"
+  },
+  "homepage": "https://github.com/JuanIrache/p5_gui#readme"
+}
