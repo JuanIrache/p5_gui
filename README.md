@@ -114,6 +114,8 @@ p.mouseReleased = function() {
   //your code
 }
 
+let gui_elements = gui.getGuiElts(); //returns the object to find elements by key
+
 
 ```
 
