@@ -99,18 +99,18 @@ gui.createText("text_name",//element label
 
 p.draw = function() {
   gui.mouseIsPressed(p.mouseIsPressed,p.mouseX,p.mouseY);
-  gui_elts.mouseOver(p.mouseX,p.mouseY);
+  gui.mouseOver(p.mouseX,p.mouseY);
   gui.draw();
   //your code
 }
         
 p.mousePressed = function() {
-  gui_elts.mousePressed(p.mouseX,p.mouseY);
+  gui.mousePressed(p.mouseX,p.mouseY);
   //your code
 }
 
 p.mouseReleased = function() {
-  gui_elts.mouseReleased();
+  gui.mouseReleased();
   //your code
 }
 
