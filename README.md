@@ -25,74 +25,75 @@ gui.setup(p,//p5js instance
   .5);//shadow alpha in HSB mode
 
 //then we can start creating elements. Here we assume p is the p5js instance:
+//Buttons and similar elements are drawn in CORNER mode, text alginment can be changed
+
+//Area prints a rect where specified. Useful for backgrounds
+gui.createArea("area_name",//element label
+			0,//x position
+			0,//y position
+			600,//width
+			600,//height
+			p.color(100),//p5 color
+			callback_function);//callback function
 
 //Button
-gui.createButton("button_name",
+gui.createButton("button_name",//element label
 			"Press me",//text value
-			xPos,//x position
-			yPos,//y position
-			width,//width
-			height,//height
+			10,//x position
+			10,//y position
+			200,//width
+			30,//height
 			p.color(100,0,0),//p5 color
 			callback_function,//callback function
 			p.color(255));//textcolor
       
 //Interactive slider
-gui.createSlider("slider_name",
+gui.createSlider("slider_name",//element label
 		  10,//initial value (number)
-			xPos,//x position
-			yPos,//y position
-			width,//width
-			height,//height
+			10,//x position
+			50,//y position
+			400,//width
+			10,//height
 			p.color(100,0,0),//p5 color
 			callback_function,//callback function
 			0,//minimum value
 			20);//maximum value
       
 //Toggle creates a button that can be either on or off
-gui.createToggle("toggle_name",
+gui.createToggle("toggle_name",//element label
 			true, //state, true or false
 			"Press me",//label
-			xPos,//x position
-			yPos,//y position
-			width,//width
-			height,//height
+			10,//x position
+			100,//y position
+			200,//width
+			30,//height
 			p.color(100,0,0),//p5 color
 			callback_function,//callback function
 			p.color(255);//text p5 color
       
 //Radio creates several options in the form of buttons. Only one can be pressed
-gui.createRadio("radio_name",
+gui.createRadio("radio_name",//element label
 			2, //initial value
 			[1,2,3],//available values
 			["One","Two","Three"],//labels
-			xPos,//x position
-			yPos,//y position
-			width,//width
-			height,//height
+			10,//x position
+			150,//y position
+			500,//width
+			30,//height
 			p.color(100,0,0),//p5 color
 			callback_function,//callback function
 			p.color(255));//text p5 color
       
 //Text just prints text
-gui.createText("text_name",
+gui.createText("text_name",//element label
 			"Text to display goes here",//initial value
-			xPos,//x position
-			yPos,//y position
-			height,//height will determine text size
+			10,//x position
+			200,//y position
+			10,//height will determine text size
 			p.color(0),//text p5 color
 			callback_function,//callback function
 			[p.CENTER,p.TOP],//TEXT ALIGN p5 values
 			p.NORMAL);//text style p5
-      
-//Area prints a rect where specified. Useful for backgrounds
-gui.createArea("area_name",
-			xPos,//x position
-			yPos,//y position
-			width,//width
-			height,//height
-			p.color(100),//p5 color
-			callback_function);//callback function
       
 //To enable the drawing and interactivity of the elements, you should add the following methods to the usual p5 functions:
 
