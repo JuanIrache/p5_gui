@@ -46,7 +46,7 @@ gui.createButton("button_name",//element label
 			p.color(100,0,0),//p5 color
 			callback_function,//callback function
 			p.color(255));//textcolor
-      
+
 //Interactive slider
 gui.createSlider("slider_name",//element label
 		  10,//initial value (number)
@@ -58,7 +58,7 @@ gui.createSlider("slider_name",//element label
 			callback_function,//callback function
 			0,//minimum value
 			20);//maximum value
-      
+
 //Toggle creates a button that can be either on or off
 gui.createToggle("toggle_name",//element label
 			true, //state, true or false
@@ -70,7 +70,7 @@ gui.createToggle("toggle_name",//element label
 			p.color(100,0,0),//p5 color
 			callback_function,//callback function
 			p.color(255);//text p5 color
-      
+
 //Radio creates several options in the form of buttons. Only one can be pressed
 gui.createRadio("radio_name",//element label
 			2, //initial value
@@ -83,7 +83,7 @@ gui.createRadio("radio_name",//element label
 			p.color(100,0,0),//p5 color
 			callback_function,//callback function
 			p.color(255));//text p5 color
-      
+
 //Text just prints text
 gui.createText("text_name",//element label
 			"Text to display goes here",//initial value
@@ -94,7 +94,7 @@ gui.createText("text_name",//element label
 			callback_function,//callback function
 			[p.CENTER,p.TOP],//TEXT ALIGN p5 values
 			p.NORMAL);//text style p5
-      
+
 //To enable the drawing and interactivity of the elements, you should add the following methods to the usual p5 functions:
 
 p.draw = function() {
@@ -103,7 +103,7 @@ p.draw = function() {
   gui.draw();
   //your code
 }
-        
+
 p.mousePressed = function() {
   gui.mousePressed(p.mouseX,p.mouseY);
   //your code
@@ -122,3 +122,4 @@ let gui_elements = gui.getGuiElts(); //returns the object to find elements by ke
 ## TODO
 - Simplify element creation?
 - Make interface clearer
+- parenting in gui elements???
