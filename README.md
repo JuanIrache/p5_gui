@@ -1,7 +1,8 @@
 # p5_gui
+
 Experimental Graphical User Interface for P5js sketches
 
-- Used for creating this SRT log viewer: http://tailorandwayne.com/dji-srt-viewer/
+- Used for creating this SRT log viewer: https://djitelemetryoverlay.com
 
 This was created for a specific project, so the interface and capabilities are very dependant on what was needed on that project. Hopefully it can be expanded and improved to fit other needs. Please let me know if you do something with it.
 
@@ -10,11 +11,13 @@ For it to work with P5js, your sketch should be in instance mode: https://github
 ## Installation
 
 Using npm:
+
 ```shell
 $ npm install p5_gui
 ```
 
 ## Usage
+
 ```js
 //Load module
 let gui = require('p5_gui');
@@ -120,6 +123,7 @@ let gui_elements = gui.getGuiElts(); //returns the object to find elements by ke
 ```
 
 ## TODO
+
 - Simplify element creation?
 - Make interface clearer
 - parenting in gui elements???
