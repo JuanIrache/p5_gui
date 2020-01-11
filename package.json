@@ -1,6 +1,6 @@
 {
   "name": "p5_gui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Experimental Graphical User Interface for P5js sketches",
   "main": "index.js",
   "scripts": {
