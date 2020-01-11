@@ -16,7 +16,7 @@ function P5GUIElements() {
     this.clicked = false;
     this.removeClick = false;
     this.mouseIsOver = false;
-    this.z = z || 1;
+    this.z = z || 0;
   }
 
   GUIElement.prototype.getValue = function() {
@@ -147,8 +147,8 @@ function P5GUIElements() {
   };
 
   ////////////////////////////////////////////////////////////////////////////SLIDER
-  function Slider(v, xPos, yPos, w, h, cl, cb, mi, ma) {
-    GUIElement.call(this, v, xPos, yPos, w, h, cl, cb);
+  function Slider(v, xPos, yPos, w, h, cl, cb, mi, ma, z) {
+    GUIElement.call(this, v, xPos, yPos, w, h, cl, cb, z);
     this.min = mi;
     this.max = ma;
   }
@@ -249,8 +249,8 @@ function P5GUIElements() {
   };
 
   ////////////////////////////////////////////////////////////////TOGGLE
-  function Toggle(v, t, xPos, yPos, w, h, cl, cb, tc) {
-    GUIElement.call(this, v, xPos, yPos, w, h, cl, cb);
+  function Toggle(v, t, xPos, yPos, w, h, cl, cb, tc, z) {
+    GUIElement.call(this, v, xPos, yPos, w, h, cl, cb, z);
     this.text = t || '';
     this.textCol = tc || p.color(100);
   }
@@ -290,8 +290,8 @@ function P5GUIElements() {
   };
 
   ///////////////////////////////////////////////////////////////////////////////////RADIO
-  function Radio(v, vs, ts, xPos, yPos, w, h, cl, cb, tc) {
-    GUIElement.call(this, v, xPos, yPos, w, h, cl, cb);
+  function Radio(v, vs, ts, xPos, yPos, w, h, cl, cb, tc, z) {
+    GUIElement.call(this, v, xPos, yPos, w, h, cl, cb, z);
     this.values = vs;
     this.texts = ts;
     this.textCol = tc || p.color(100);
@@ -366,8 +366,8 @@ function P5GUIElements() {
   };
 
   ///////////////////////////////////////////////////////////////BUTTON
-  function Button(v, xPos, yPos, w, h, cl, cb, tc) {
-    GUIElement.call(this, v, xPos, yPos, w, h, cl, cb);
+  function Button(v, xPos, yPos, w, h, cl, cb, tc, z) {
+    GUIElement.call(this, v, xPos, yPos, w, h, cl, cb, z);
     this.textCol = tc || p.color(100);
   }
 
@@ -406,8 +406,8 @@ function P5GUIElements() {
   };
 
   ////////////////////////////////////////////////////////////////////AREA
-  function Area(xPos, yPos, w, h, cl, cb) {
-    GUIElement.call(this, null, xPos, yPos, w, h, cl, cb);
+  function Area(xPos, yPos, w, h, cl, cb, z) {
+    GUIElement.call(this, null, xPos, yPos, w, h, cl, cb, z);
   }
 
   Area.prototype = Object.create(GUIElement.prototype);
@@ -467,12 +467,12 @@ function P5GUIElements() {
   };
 
   //////////////////////////////////////////////////TEXT
-  function Text(v, xPos, yPos, h, cl, cb, ta, ts) {
+  function Text(v, xPos, yPos, h, cl, cb, ta, ts, z) {
     p.textSize(h);
     this.textStyle = ts || p.NORMAL;
     p.textStyle(this.textStyle);
     let w = p.textWidth(v);
-    GUIElement.call(this, v, xPos, yPos, w, h, cl, cb);
+    GUIElement.call(this, v, xPos, yPos, w, h, cl, cb, z);
     this.textAlign = ta || [p.CENTER, p.CENTER];
   }
 
@@ -490,30 +490,30 @@ function P5GUIElements() {
   };
   ///////////////////////////////////////////////////////////////////////
   return {
-    createSlider: function(n, v, xPos, yPos, w, h, cl, cb, mi, ma) {
-      elts[n] = new Slider(v, xPos, yPos, w, h, cl, cb, mi, ma);
+    createSlider: function(n, v, xPos, yPos, w, h, cl, cb, mi, ma, z) {
+      elts[n] = new Slider(v, xPos, yPos, w, h, cl, cb, mi, ma, z);
       return elts[n];
     },
-    createToggle: function(n, v, t, xPos, yPos, w, h, cl, cb, tc) {
-      elts[n] = new Toggle(v, t, xPos, yPos, w, h, cl, cb, tc);
+    createToggle: function(n, v, t, xPos, yPos, w, h, cl, cb, tc, z) {
+      elts[n] = new Toggle(v, t, xPos, yPos, w, h, cl, cb, tc, z);
       return elts[n];
     },
-    createRadio: function(n, v, vs, ts, xPos, yPos, w, h, cl, cb, tc) {
+    createRadio: function(n, v, vs, ts, xPos, yPos, w, h, cl, cb, tc, z) {
       //horizontal radio buttons (interdependent toggles, also)
-      elts[n] = new Radio(v, vs, ts, xPos, yPos, w, h, cl, cb, tc);
+      elts[n] = new Radio(v, vs, ts, xPos, yPos, w, h, cl, cb, tc, z);
       return elts[n];
     },
-    createButton: function(n, v, xPos, yPos, w, h, cl, cb, tc) {
-      elts[n] = new Button(v, xPos, yPos, w, h, cl, cb, tc);
+    createButton: function(n, v, xPos, yPos, w, h, cl, cb, tc, z) {
+      elts[n] = new Button(v, xPos, yPos, w, h, cl, cb, tc, z);
       return elts[n];
     },
-    createArea: function(n, xPos, yPos, w, h, cl, cb) {
-      elts[n] = new Area(xPos, yPos, w, h, cl, cb);
+    createArea: function(n, xPos, yPos, w, h, cl, cb, z) {
+      elts[n] = new Area(xPos, yPos, w, h, cl, cb, z);
       return elts[n];
     },
-    createText: function(n, v, xPos, yPos, h, cl, cb, ta, ts) {
+    createText: function(n, v, xPos, yPos, h, cl, cb, ta, ts, z) {
       //pass textAlign function
-      elts[n] = new Text(v, xPos, yPos, h, cl, cb, ta, ts);
+      elts[n] = new Text(v, xPos, yPos, h, cl, cb, ta, ts, z);
       return elts[n];
     },
     setup: function(p5, shD, shO) {
