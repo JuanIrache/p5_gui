@@ -4,7 +4,7 @@ function P5GUIElements() {
   let shadowOp;
   let elts = {};
 
-  function GUIElement(v, xPos, yPos, w, h, cl, cb) {
+  function GUIElement(v, xPos, yPos, w, h, cl, cb, z) {
     //very basic button to derive other GUI elements from
     this.value = v || 0;
     this.x = xPos || 0;
@@ -16,6 +16,7 @@ function P5GUIElements() {
     this.clicked = false;
     this.removeClick = false;
     this.mouseIsOver = false;
+    this.z = z || 1;
   }
 
   GUIElement.prototype.getValue = function() {
@@ -58,7 +59,10 @@ function P5GUIElements() {
       my <= this.y + this.height
     ) {
       this.clicked = true;
-      callback(this.value);
+      if (callback) {
+        callback(this.value);
+        return true;
+      }
     }
   };
 
@@ -198,7 +202,10 @@ function P5GUIElements() {
       this.clicked = true;
       let pos = p.map(mx, this.x, this.x + this.width, this.min, this.max);
       this.value = Math.min(Math.max(Math.round(pos), this.min), this.max);
-      callback(this.value);
+      if (callback) {
+        callback(this.value);
+        return true;
+      }
     }
   };
 
@@ -275,7 +282,10 @@ function P5GUIElements() {
     ) {
       let callback = cb || this.callback;
       this.value = !this.value;
-      callback(this.value);
+      if (callback) {
+        callback(this.value);
+        return true;
+      }
     }
   };
 
@@ -323,7 +333,10 @@ function P5GUIElements() {
       ) {
         let callback = cb || this.callback;
         this.value = this.values[i];
-        callback(this.value);
+        if (callback) {
+          callback(this.value);
+          return true;
+        }
       }
     });
   };
@@ -385,7 +398,10 @@ function P5GUIElements() {
     ) {
       this.clicked = true;
       let callback = cb || this.callback;
-      callback();
+      if (callback) {
+        callback();
+        return true;
+      }
     }
   };
 
@@ -414,7 +430,10 @@ function P5GUIElements() {
       my <= this.y + this.height
     ) {
       let callback = cb || this.callback;
-      callback(mx - this.x, my - this.y);
+      if (callback) {
+        callback(mx - this.x, my - this.y);
+        return true;
+      }
     }
   };
 
@@ -470,7 +489,6 @@ function P5GUIElements() {
     p.text(this.value, this.x, this.y);
   };
   ///////////////////////////////////////////////////////////////////////
-
   return {
     createSlider: function(n, v, xPos, yPos, w, h, cl, cb, mi, ma) {
       elts[n] = new Slider(v, xPos, yPos, w, h, cl, cb, mi, ma);
@@ -507,9 +525,12 @@ function P5GUIElements() {
       return elts;
     },
     draw: function() {
-      for (let elt in elts) {
+      //Sort by z position
+      const eltsArr = Object.values(elts);
+      eltsArr.sort((a, b) => a.z - b.z);
+      for (const elt of eltsArr) {
         //loop through all gui elements
-        elts[elt].draw();
+        elt.draw();
       }
     },
     mouseIsPressed: function(mouseIsPressed, mouseX, mouseY) {
@@ -525,9 +546,13 @@ function P5GUIElements() {
       }
     },
     mousePressed: function(mouseX, mouseY) {
-      for (let elt in elts) {
+      //Sort by z position
+      const eltsArr = Object.values(elts);
+      eltsArr.sort((a, b) => b.z - a.z);
+      for (const elt of eltsArr) {
         //loop through all gui elements
-        elts[elt].mousePressed(mouseX, mouseY);
+        //Break when clicked one element
+        if (elt.mousePressed(mouseX, mouseY)) break;
       }
     },
     mouseReleased: function() {
