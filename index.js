@@ -560,6 +560,9 @@ function P5GUIElements() {
         //loop through all gui elements
         elts[elt].mouseReleased();
       }
+    },
+    empty: function() {
+      elts = {};
     }
   };
 }
