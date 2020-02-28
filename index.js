@@ -249,10 +249,11 @@ function P5GUIElements() {
   };
 
   ////////////////////////////////////////////////////////////////TOGGLE
-  function Toggle(v, t, xPos, yPos, w, h, cl, cb, tc, z) {
+  function Toggle(v, t, xPos, yPos, w, h, cl, cb, tc, z, ot) {
     GUIElement.call(this, v, xPos, yPos, w, h, cl, cb, z);
     this.text = t || '';
     this.textCol = tc || p.color(100);
+    this.offText = ot;
   }
 
   Toggle.prototype = Object.create(GUIElement.prototype);
@@ -261,13 +262,16 @@ function P5GUIElements() {
   Toggle.prototype.draw = function() {
     p.rectMode(p.CORNER);
     p.colorMode(p.HSB);
+    let text = this.text;
+    if (!this.value && !this.clicked && this.offText != null)
+      text = this.offText;
     this.drawButtonLike(
       this.x,
       this.y,
       this.width,
       this.height,
       this.color,
-      this.text,
+      text,
       this.textCol,
       this.value || this.clicked
     );
@@ -494,8 +498,8 @@ function P5GUIElements() {
       elts[n] = new Slider(v, xPos, yPos, w, h, cl, cb, mi, ma, z);
       return elts[n];
     },
-    createToggle: function(n, v, t, xPos, yPos, w, h, cl, cb, tc, z) {
-      elts[n] = new Toggle(v, t, xPos, yPos, w, h, cl, cb, tc, z);
+    createToggle: function(n, v, t, xPos, yPos, w, h, cl, cb, tc, z, ot) {
+      elts[n] = new Toggle(v, t, xPos, yPos, w, h, cl, cb, tc, z, ot);
       return elts[n];
     },
     createRadio: function(n, v, vs, ts, xPos, yPos, w, h, cl, cb, tc, z) {
